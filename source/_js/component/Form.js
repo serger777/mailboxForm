@@ -29,14 +29,15 @@ class Form {
     }
 
     requestForm(value) {
-        const url = `http://apilayer.net/api/check?access_key=9ddfff84cc198c09a839e9fb512609cb&email=${value}`;
+        const url = `https://apilayer.net/api/check?access_key=9ddfff84cc198c09a839e9fb512609cb&email=${value}`;
+        const resultBlock = document.querySelector(".result-block");
         const opt = {
             method: "GET",
         };
         fetch(url, opt)
             .then(response => response.json())
             .then(data => {
-                const resultBlock = document.querySelector(".result-block");
+
                 let text, classText;
                 if(data.format_valid){
                     text=`Valid Format`;
@@ -49,6 +50,7 @@ class Form {
                 })
             .catch((error) => {
                 console.log(error);
+                resultBlock.innerHTML = `<p class="error">Что то пошло не так ${error}</p>`
             })
     }
 }

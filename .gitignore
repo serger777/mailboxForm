@@ -1,0 +1,7 @@
+/.idea
+*.sql
+*.zip
+*.xml
+/*.htaccess
+.sass-cache
+/node_modules
